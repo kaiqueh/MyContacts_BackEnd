@@ -20,26 +20,26 @@ class contactController {
     }
 
     async store(req, res) {
-     const {name, email, phone, category_id} = req.body;
+        const { name, email, phone, category_id } = req.body;
 
-     const emailExists = await repositories.findByEmail(email);
+        const emailExists = await repositories.findByEmail(email);
 
-     if (!emailExists) {
-         return res.status(400).json({ error: "Email already exists" });
-     }
+        if (!emailExists) {
+            return res.status(400).json({ error: "Email already exists" });
+        }
 
-     if(!name){
+        if (!name) {
             return res.status(400).json({ error: "Name is required" });
         }
 
-    const contact = await repositories.createcontact({
-        name,
-        email,
-        phone,
-        category_id,
-    });
+        const contact = await repositories.createcontact({
+            name,
+            email,
+            phone,
+            category_id,
+        });
 
-    res.json(contact);
+        res.json(contact);
     }
 
     async update(req, res) {
@@ -52,8 +52,8 @@ class contactController {
             return res.status(404).json({ error: "Contact not found" });
         }
 
-        if(!name){
-            return res.status(400).json({error: "Name is required"})
+        if (!name) {
+            return res.status(400).json({ error: "Name is required" });
         }
 
         const constactemail = await repositories.findByEmail(email);
@@ -62,7 +62,7 @@ class contactController {
             return res.status(400).json({ error: "Email already exists" });
         }
 
-        const contact = await repositories.updatecontact(id,{
+        const contact = await repositories.updatecontact(id, {
             name,
             email,
             phone,
