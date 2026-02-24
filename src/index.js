@@ -1,8 +1,13 @@
-const express = require("express")
-const app = express()
-const routes = require('./App/routes')
+const cors = require("./App/middlewares/cors");
+const errorHandler = require("./App/middlewares/ErroHandler");
+const express = require("express");
 
-app.use(express.json())
-app.use(routes)
+const app = express();
+const routes = require("./App/routes");
 
-app.listen(3000, () => console.log('http://localhost:3000 is running🔥'))
+app.use(express.json());
+app.use(cors);
+app.use(routes);
+app.use(errorHandler);
+
+app.listen(3001, () => console.log("http://localhost:3001 is running🔥"));
