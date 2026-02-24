@@ -3,7 +3,7 @@ const repositories = require("../repositories/ContactRepository");
 class contactController {
     async index(req, res) {
         const contacts = await repositories.findall();
-
+        console.log({ contacts });
         res.json(contacts);
     }
 
