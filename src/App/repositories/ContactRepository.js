@@ -28,10 +28,10 @@ class concatRepository {
         const deleteOp = await db.Query("DELETE FROM contacts");
         return deleteOp;
     }
-    async createcontact({ name, email, phone, category_id }) {
+    async createcontact({ name, email, phone, category_id, category_name }) {
         const [row] = await db.Query(
-            `INSERT INTO contacts (name, email, phone, category_id) VALUES ($1 , $2, $3, $4) RETURNING *`,
-            [name, email, phone, category_id],
+            `INSERT INTO contacts (name, email, phone, category_id, category_name ) VALUES ($1 , $2, $3, $4, $5) RETURNING *`,
+            [name, email, phone, category_id, category_name],
         );
         return row;
     }

@@ -20,7 +20,7 @@ class contactController {
     }
 
     async store(req, res) {
-        const { name, email, phone, category_id } = req.body;
+        const { name, email, phone, category_id, category_name } = req.body;
 
         const emailExists = await repositories.findByEmail(email);
 
@@ -37,6 +37,7 @@ class contactController {
             email,
             phone,
             category_id,
+            category_name,
         });
 
         res.json(contact);
