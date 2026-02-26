@@ -23,6 +23,10 @@ class concatRepository {
         ]);
         return deleteOp;
     }
+    async deleteAll() {
+        const deleteOp = await db.Query("DELETE FROM contacts");
+        return deleteOp;
+    }
     async createcontact({ name, email, phone, category_id }) {
         const [row] = await db.Query(
             `INSERT INTO contacts (name, email, phone, category_id) VALUES ($1 , $2, $3, $4) RETURNING *`,

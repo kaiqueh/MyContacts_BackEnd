@@ -3,7 +3,7 @@ const repositories = require("../repositories/ContactRepository");
 class contactController {
     async index(req, res) {
         const contacts = await repositories.findall();
-        console.log({ contacts });
+        // console.log({ contacts });
         res.json(contacts);
     }
 
@@ -83,6 +83,11 @@ class contactController {
         }
 
         await repositories.delete(id);
+        return res.sendStatus(204);
+    }
+
+    async deleteAll(req, res) {
+        await repositories.deleteAll();
         return res.sendStatus(204);
     }
 }
