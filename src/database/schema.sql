@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS Contacts (
     name VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
     phone VARCHAR,
+    category_name VARCHAR(255),
     category_id UUID,
     foreign key (category_id) references Categories(id)
 );

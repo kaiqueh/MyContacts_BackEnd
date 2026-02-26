@@ -24,7 +24,7 @@ class contactController {
 
         const emailExists = await repositories.findByEmail(email);
 
-        if (!emailExists) {
+        if (emailExists) {
             return res.status(400).json({ error: "Email already exists" });
         }
 
