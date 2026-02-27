@@ -1,8 +1,11 @@
 const db = require("../../database");
 
 class concatRepository {
-    async findall() {
-        const rows = await db.Query("SELECT * FROM contacts");
+    async findall(orderBy = "ASC") {
+        const direction = orderBy.toUpperCase() === "DESC" ? "DESC" : "ASC";
+        const rows = await db.Query(
+            `SELECT * FROM contacts ORDER BY name ${direction}`,
+        );
         return rows;
     }
     async findbyId(id) {

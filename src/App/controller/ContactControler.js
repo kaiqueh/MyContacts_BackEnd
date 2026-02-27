@@ -2,8 +2,8 @@ const repositories = require("../repositories/ContactRepository");
 
 class contactController {
     async index(req, res) {
-        const contacts = await repositories.findall();
-        // console.log({ contacts });
+        const { orderBy } = req.query;
+        const contacts = await repositories.findall(orderBy);
         res.json(contacts);
     }
 
