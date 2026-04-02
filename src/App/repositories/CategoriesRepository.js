@@ -1,7 +1,9 @@
 const db = require("../../database");
 
 class CategoriesRepository {
-    findAll() {}
+    findAll() {
+        return db.Query("SELECT * FROM categories");
+    }
 
     async create({ name }) {
         const [row] = await db.Query(
