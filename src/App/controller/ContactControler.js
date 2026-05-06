@@ -11,7 +11,7 @@ class contactController {
     async show(req, res) {
         const { id } = req.params;
 
-        if (ValidUUID(id)) {
+        if (!ValidUUID(id)) {
             return res.status(400).json({ error: "Id invalid" });
         }
 
